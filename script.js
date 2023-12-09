@@ -25,3 +25,16 @@ function renderCurrentSongUI(index, list) {
     document.getElementById('song-title').textContent = currentSong.title;
     document.getElementById('song-artist').textContent = currentSong["artist-name"];
 }
+
+// Event Listeners
+document.getElementById('play-button').addEventListener('click', () => {
+    playSong(originalList);
+});
+
+function playSong(list) {
+    const currentSong = list[currentSongIndex];
+    audio.pause();
+    audio.src = currentSong.url; // Set the audio source to the current song URL
+    audio.play();
+    renderCurrentSongUI(currentSongIndex, list);
+}
