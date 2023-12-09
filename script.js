@@ -60,3 +60,12 @@ document.getElementById('prev-button').addEventListener('click', () => {
     }
     playSong(originalList);
 });
+
+songList.addEventListener('click', (e) => {
+    if (e.target.tagName === 'LI') {
+        const clickedSong = e.target.innerHTML;
+        console.log(clickedSong);
+        currentSongIndex = originalList.findIndex(obj => obj.title === clickedSong);
+        playSong(originalList); // Play the selected song
+    }
+});
