@@ -49,3 +49,14 @@ document.getElementById('next-button').addEventListener('click', () => {
     }
     playSong(originalList);
 });
+
+
+document.getElementById('prev-button').addEventListener('click', () => {
+    const previousSong = currentSongIndex - 1;
+    if (previousSong < 0) {
+        currentSongIndex = 0;
+    } else {
+        currentSongIndex = previousSong;
+    }
+    playSong(originalList);
+});
