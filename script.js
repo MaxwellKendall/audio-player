@@ -1,6 +1,7 @@
 // Global Variables
 const originalList = [...songs];
 let currentSongIndex = 0;
+const MAXIMUM_SONG_INDEX = originalList.length - 1;
 
 // DOM Elements
 const songList = document.getElementById("song-list");
@@ -38,3 +39,13 @@ function playSong(list) {
     audio.play();
     renderCurrentSongUI(currentSongIndex, list);
 }
+
+document.getElementById('next-button').addEventListener('click', () => {
+    const nextSong = currentSongIndex + 1;
+    if (nextSong > MAXIMUM_SONG_INDEX) {
+        currentSongIndex = 0;
+    } else {
+        currentSongIndex = nextSong;
+    }
+    playSong(originalList);
+});
