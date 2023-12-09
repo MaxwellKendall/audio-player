@@ -5,6 +5,7 @@ const MAXIMUM_SONG_INDEX = originalList.length - 1;
 
 // DOM Elements
 const songList = document.getElementById("song-list");
+const searchInput = document.getElementById('search-input');
 
 displaySongs(originalList);
 renderCurrentSongUI(currentSongIndex, originalList);
@@ -68,4 +69,13 @@ songList.addEventListener('click', (e) => {
         currentSongIndex = originalList.findIndex(obj => obj.title === clickedSong);
         playSong(originalList); // Play the selected song
     }
+});
+
+// handle search
+searchInput.addEventListener('input', () => {
+    const searchTerm = searchInput.value.toLowerCase();
+    const filteredSongs = originalList.filter((song) =>
+        song.title.toLowerCase().includes(searchTerm)
+    );
+    displaySongs(filteredSongs); // Update the displayed song list with filtered results
 });
